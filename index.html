@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tracking how long it's been since my WhatsApp ban. Join me in raising awareness about unfair bans and advocating for user rights.">
+    <meta name="keywords" content="WhatsApp ban, timer, user rights, unfair bans, accountability, communication issues">
+    <meta name="author" content="Your Name">
+    <title>Timer Since December 11, 2024</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #25D366; /* WhatsApp green */
+            color: #ffffff; /* White text */
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            height: 100vh;
+        }
+        #timer {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding: 0 10px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1rem;
+            margin: 1rem 20px;
+            max-width: 600px;
+            font-weight: 400;
+        }
+        #social-share {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        #social-share img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            #timer {
+                font-size: 2.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+            #social-share img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">Calculating...</div>
+    <h1>Time Elapsed Since December 11, 2024 13:48 ET</h1>
+    <p>
+        For over 12 years, WhatsApp has been an essential tool in my professional life as a film producer, connecting me with colleagues, vendors, and collaborators worldwide. Recently, my account was abruptly banned following a technical issue on the platform, leaving me without access to critical data and disrupting key projects. Despite numerous attempts to resolve this through appeals and outreach, I’ve been met with silence. This experience is not unique to me—countless others have faced similar challenges, highlighting systemic issues in how WhatsApp handles its users. If you’ve experienced unfair account bans or communication breakdowns, join me in raising awareness and advocating for accountability from this vital platform. Together, we can push for fairness and better practices.
+    </p>
+
+    <div id="social-share">
+        <p>Share:</p>
+        <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20timer!&url=https://yourwebsite.com" target="_blank">
+            <img src="https://commons.wikimedia.org/wiki/File:X_logo_2023.svg" alt="Share on Twitter">
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Share on Facebook">
+        </a>
+        <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20timer!%20https://yourwebsite.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Share on WhatsApp">
+        </a>
+    </div>
+
+    <script>
+        // Timer logic
+        const startDate = new Date('2024-12-11T18:48:00Z'); // Adjusted to UTC
+
+        function updateTimer() {
+            const now = new Date();
+            const elapsed = now - startDate;
+
+            const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').textContent = 
+                `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer(); // Update immediately on page load
+    </script>
+</body>
+</html>
