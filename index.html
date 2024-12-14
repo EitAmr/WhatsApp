@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Timer and Vote Counter</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/KYqWhyVz/Screenshot-20241211-135704-Ban-icon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,22 +67,6 @@
         button:hover {
             background: #0056b3;
         }
-        textarea {
-            width: 90%;
-            height: 80px;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        #comments p {
-            background: #f9f9f9;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 5px 0;
-        }
         .modal {
             display: none;
             position: fixed;
@@ -139,7 +125,26 @@
         <button id="vote-button">Vote</button>
     </section>
 
-  
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB-3XLyfES3DBuL6GFi8QTWhxOvHi8s8bU",
+            authDomain: "whatsapp-counter-dfdc1.firebaseapp.com",
+            databaseURL: "https://whatsapp-counter-dfdc1-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "whatsapp-counter-dfdc1",
+            storageBucket: "whatsapp-counter-dfdc1.firebasestorage.app",
+            messagingSenderId: "27108990388",
+            appId: "1:27108990388:web:8d7e121c9b6ba94023a6e1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        console.log("Firebase initialized successfully!");
+
         // Timer Logic
         const startDate = new Date('2024-12-11T18:48:00Z');
         function updateTimer() {
@@ -190,30 +195,6 @@
             } else {
                 alert("You have already voted.");
             }
-        });
-
-        // Comments Logic
-        const commentsRef = ref(db, "comments");
-
-        document.getElementById("comment-button").addEventListener("click", () => {
-            const comment = document.getElementById("comment-input").value.trim();
-            if (comment) {
-                push(commentsRef, comment)
-                    .then(() => console.log("Comment added:", comment))
-                    .catch((error) => console.error("Error adding comment:", error));
-                document.getElementById("comment-input").value = "";
-            }
-        });
-
-        onValue(commentsRef, (snapshot) => {
-            const commentsDiv = document.getElementById("comments");
-            commentsDiv.innerHTML = "";
-            snapshot.forEach((childSnapshot) => {
-                const comment = childSnapshot.val();
-                const p = document.createElement("p");
-                p.textContent = comment;
-                commentsDiv.appendChild(p);
-            });
         });
     </script>
 </body>
